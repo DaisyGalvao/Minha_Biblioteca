@@ -1,4 +1,4 @@
-﻿namespace CRUD.Models
+﻿namespace Minha_Biblioteca.Models
 {
     public class StatusLivroModel
     {

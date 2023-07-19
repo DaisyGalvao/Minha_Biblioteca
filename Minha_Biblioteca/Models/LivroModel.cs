@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CRUD.Models
+namespace Minha_Biblioteca.Models
 {
     public class LivroModel
     {
