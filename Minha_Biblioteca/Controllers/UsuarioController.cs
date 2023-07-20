@@ -23,19 +23,18 @@ namespace Minha_Biblioteca.Controllers
                          @Nome,
                          @Email,
                          @Senha,
-                         @Data_cadastro
+                         GETDATE()
                         )";
-            using (var conn = new SqlConnection("Server=DAISY\\SQLEXPRESS; Database=CRUD; User Id=sa; Password=anonimo;"))
+            using (var conn = new SqlConnection("Server=DAISY\\SQLEXPRESS; Database=Minha_Biblioteca; User Id=sa; Password=anonimo;"))
             {
                 conn.Open();
 
                 conn.Query(query,
                     new
                     {
-                        Nome = usuarioModel.nome,
-                        Email = usuarioModel.email,
-                        Senha = usuarioModel.senha,
-                        Data_cadastro = usuarioModel.data_cadastro
+                        Nome = usuarioModel.Nome,
+                        Email = usuarioModel.Email,
+                        Senha = usuarioModel.Senha
                     }).FirstOrDefault();
             }
         }
