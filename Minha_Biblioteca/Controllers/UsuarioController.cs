@@ -38,6 +38,7 @@ namespace Minha_Biblioteca.Controllers
                     }).FirstOrDefault();
             }
         }
+
         [HttpPut]
         [Route("Update")]
         public void Update(UsuarioModel usuarioModel)
@@ -62,5 +63,31 @@ namespace Minha_Biblioteca.Controllers
                     }).FirstOrDefault();
             }
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public UsuarioModel Login(UsuarioModel usuarioModel)
+        {
+            var query = @"select * from Usuario
+                           where Senha = @Senha
+                          and Email = @Email";
+
+            using (var conn = new SqlConnection("Server=DAISY\\SQLEXPRESS; Database=Minha_Biblioteca; User Id=sa; Password=anonimo;"))
+            {
+                conn.Open();
+
+                var resp = conn.Query<UsuarioModel>(query,
+                    new
+                    {
+                        Email = usuarioModel.Email,
+                        Senha = usuarioModel.Senha
+                    }).FirstOrDefault();
+
+                return resp;
+            }
+        }
+
+
+
     }
 }
